@@ -2,11 +2,14 @@ import './App.css';
 
 function App() {
     return ( 
+
+        //BEM naming convention
     <div className = "App" >
-        <h1 > Hello programmer,
-        let 's build slack clone</h1>  
+        {/* Header */}
+        {/** Sidebar */} 
+        {/** React-Router  => Chat Screen */}
     </div>
-    
+
     );
 }
 
