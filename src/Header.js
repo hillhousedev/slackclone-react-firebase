@@ -1,4 +1,5 @@
 import React from 'react'
+import "./Header.css";
 import { Avatar } from "@material-ui/core";
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import SearchIcon from '@material-ui/icons/Search';
@@ -27,7 +28,7 @@ function Header() {
                 <div className="header__right">
                     {/** help icon */}
                 <HelpOutlineIcon />
-                
+
                 </div>
             
         </div>

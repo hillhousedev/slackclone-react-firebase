@@ -7,9 +7,11 @@ function App() {
         //BEM naming convention
     <div className = "App" >
     <Header />
-        {/* Header */}
-        {/** Sidebar */} 
-        {/** React-Router  => Chat Screen */}
+    <div className="app_body">
+                {/** Sidebar */}
+                {/** React-Router  => Chat Screen */}
+    </div>
+        
     </div>
 
     );
