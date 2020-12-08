@@ -1,6 +1,7 @@
 import React from 'react'
 import "./SidebarOption.css";
 
+import InboxIcon from '@material-ui/icons/Inbox';
 
 
 function SidebarOption({ Icon, title}) {

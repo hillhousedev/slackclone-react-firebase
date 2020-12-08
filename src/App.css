@@ -2,3 +2,8 @@ body {
   --slack-color: #3f0f40;
   --second-color: #49274b;
 }
+
+.app_body {
+  display: flex;
+  height: 100vh;
+}

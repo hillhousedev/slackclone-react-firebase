@@ -1,6 +1,7 @@
 import './App.css';
-import Header from "./Header"
-import Sidebar from "./Sidebar"
+import Header from "./Header";
+import Sidebar from "./Sidebar";
+import Chat from "./Chat";
 import { BrowserRouter as Router, Switch, Route } 
 from "react-router-dom";
 
@@ -17,8 +18,8 @@ function App() {
             <Sidebar />
             <Switch>
                 <Route path="/room/:roomId">
-                    <h1>CHAT SCREEN</h1>
-                    {/* <Chat /> */}
+                    
+                    <Chat />
                 </Route>
                 <Route path="/">
                     <h1>Welcome</h1>
