@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import "./Chat.css";
 import { useParams } from "react-router-dom";
 import StarBorderIcon from '@material-ui/icons/StarBorder';
@@ -9,16 +9,31 @@ import db from "./firebase";
 function Chat() {
 
     const { roomId } = useParams();
-    const {roomDetails, setRoomDetails} = useState(null);
+    const [roomDetails, setRoomDetails] = useState(null);
+    const [roomMessages, setRoomMessages] = useState(null);
 
     useEffect(() => {
       if(roomId) {
-          db.collection('rooms').document(roomId)
-            .onSnapshot(snapshot => (
-
-            ))
+          db.collection("rooms")
+          .doc(roomId)
+            .onSnapshot((snapshot) => 
+                setRoomDetails(snapshot.data())
+            )
       }
-    }, [roomId])
+
+      db.collection("rooms")
+      .doc(roomId)
+      .collection("messages")
+      .orderBy("timestamp", "asc")
+      .onSnapshot((snapshot) =>
+        setRoomMessages(
+            snapshot.docs.map(doc => doc.data())
+        )
+      );
+    }, [roomId]);
+
+    console.log(roomDetails);
+    console.log("MESSAGES >>>> ", roomMessages);
 
     return (
         <div className="chat">
@@ -26,7 +41,7 @@ function Chat() {
             <div className="chat__header">
                 <div className="chat__headerLeft">
                     <h4 className="chat__channelName">
-                        <strong># general </strong>
+                        <strong>#{roomDetails?.name} </strong>
                         <StarOutlineIcon />
                     </h4>
                 </div>
@@ -36,6 +51,10 @@ function Chat() {
                         <InfoIcon /> Details
                     </p>
                 </div>
+            </div>
+
+            <div className="chat__messages">
+            
             </div>
         </div>
     )
