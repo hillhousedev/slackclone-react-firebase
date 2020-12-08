@@ -2,10 +2,35 @@ import React from 'react'
 import "./SidebarOption.css";
 
 import InboxIcon from '@material-ui/icons/Inbox';
+import { useHistory } from "react-router-dom";
+import db from './firebase';
 
 
-function SidebarOption({ Icon, title}) {
-    return ( <div className="sidebarOption">
+
+function SidebarOption({ Icon, title, id, addChannelOption}) {
+    
+    const history = useHistory();
+
+    const selectChannel = () => {
+        if (id) {
+            history.push(`/room/${id}`)
+        } else {
+            history.push(title);
+        }
+    };
+
+    const addChannel = () => {
+        const channelName = prompt('Please enter the channel room name');
+
+        if(channelName) {
+            db.collection('rooms').add({
+                name: channelName,
+                
+            })
+        }
+    };
+
+    return ( <div className="sidebarOption" onClick={addChannelOption ? addChannel : selectChannel }>
             {Icon && <Icon className="sidebarOption__icon" />} 
             {Icon ? ( 
             <h3>{title}</h3>
