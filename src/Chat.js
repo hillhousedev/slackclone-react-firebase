@@ -5,12 +5,13 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import StarOutlineIcon from '@material-ui/icons/StarOutline';
 import InfoIcon from '@material-ui/icons/Info';
 import db from "./firebase";
+import Message from "./Message";
 
 function Chat() {
 
     const { roomId } = useParams();
     const [roomDetails, setRoomDetails] = useState(null);
-    const [roomMessages, setRoomMessages] = useState(null);
+    const [roomMessages, setRoomMessages] = useState([]);
 
     useEffect(() => {
       if(roomId) {
@@ -54,7 +55,16 @@ function Chat() {
             </div>
 
             <div className="chat__messages">
-            
+                {roomMessages?.map(({message, timestamp, user, userimage})  => (
+                    <Message 
+                    message={message}
+                    timestamp={timestamp}
+                    user={user}
+                    userimage={userimage}
+                    />
+                )) 
+                
+                }
             </div>
         </div>
     )
