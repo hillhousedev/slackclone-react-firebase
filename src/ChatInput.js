@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import "./ChatInput.css";
 import db from "./firebase";
 import firebase from "firebase";
-import {useStateValue} from "@materia-ui/core";
+import {useStateValue} from "./StateProvider";
+import { Button } from "@material-ui/core"
 
 
 function ChatInput({ channelName, channelId }) {
@@ -11,17 +12,19 @@ function ChatInput({ channelName, channelId }) {
 
     const sendMessage = (e) => {
         e.preventDefault();
-        console.log("Will save");
+
+        // console.log("Will save");
+
         if(channelId) {
-            console.log("Has ID!");
-            db.collection("rooms").doc(channelId).collection("message").add({
+            // console.log("Has ID!");
+            db.collection("rooms").doc(channelId).collection("messages").add({
                 message: input,
                 timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                 user: user.displayName,
                 userImage: user.photoURL,
-            });
-            setInput("");
-        };
+            })
+            // setInput("");
+        }
 
     }
     return (
