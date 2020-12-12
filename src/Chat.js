@@ -6,6 +6,7 @@ import StarOutlineIcon from '@material-ui/icons/StarOutline';
 import InfoIcon from '@material-ui/icons/Info';
 import db from "./firebase";
 import Message from "./Message";
+import ChatInput from "./ChatInput";
 
 function Chat() {
 
@@ -66,8 +67,11 @@ function Chat() {
                 
                 }
             </div>
+            <ChatInput channelName={roomDetails ?.name} channelId={roomId} />
         </div>
-    )
+
+        
+    );
 }
 
 export default Chat
