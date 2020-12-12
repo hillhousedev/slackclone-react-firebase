@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState }from 'react';
 import './Message.css';
 
 function Message({ message, timestamp, user, userimage }) {
+   
+  
+    
     return (
         <div className="message">
             <img src={userimage} alt=""/>
