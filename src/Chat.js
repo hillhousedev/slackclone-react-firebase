@@ -63,11 +63,9 @@ function Chat() {
                     user={user}
                     userimage={userimage}
                     />
-                )) 
-                
-                }
+                ))}
             </div>
-            <ChatInput channelName={roomDetails ?.name} channelId={roomId} />
+            <ChatInput channelName={roomDetails?.name} channelId={roomId} />
         </div>
 
         

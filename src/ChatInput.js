@@ -13,20 +13,19 @@ function ChatInput({ channelName, channelId }) {
     const sendMessage = (e) => {
         e.preventDefault();
 
-        // console.log("Will save");
-
+       
         if(channelId) {
-            // console.log("Has ID!");
+         
             db.collection("rooms").doc(channelId).collection("messages").add({
                 message: input,
                 timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                 user: user.displayName,
                 userImage: user.photoURL,
-            })
-            // setInput("");
+            });
+            
         }
 
-    }
+    };
     return (
         <div className="chatInput">
             <form>
@@ -36,13 +35,13 @@ function ChatInput({ channelName, channelId }) {
                     placeholder={`Message #${channelName?.toLowerCase()}`}
 
                 />
-                <Button type="submit" onClick={sendMessage}>
+                <button type="submit" onClick={sendMessage}>
                     Send
-                </Button>
+                </button>
             </form>
             
         </div>
     );
 }
 
-export default ChatInput
+export default ChatInput;
